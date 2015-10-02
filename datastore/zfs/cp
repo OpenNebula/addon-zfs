@@ -134,6 +134,18 @@ REGISTER_CMD=$(cat <<EOF
 
     $SUDO ${ZFS_CMD} create -V ${SIZE}M ${DATASET_NAME}/${IMAGE_NAME}
 
+    TIMEOUT=0
+    until [ -b $DEV ]; do
+        sleep 1 && let "TIMEOUT +=1"
+        if [ "$TIMEOUT" > 10 ]; then
+            error_message "Error cloning $SRC_HOST:$SRC_DEV to $DST_HOST:$DEV, volume does not appear"
+            exit -1
+        fi
+
+    done
+
+    $SUDO chown oneadmin: $DEV
+
     # remove original
     $RM -f $TMP_DST
 EOF

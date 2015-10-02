@@ -67,8 +67,6 @@ if [ -z "$DST_HOST" ]; then
     exit -1
 fi
 
-
-echo $SRC ========
 SRC_PATH=`arg_path $SRC`
 DEV="/dev/zvol/$SRC_PATH"
 

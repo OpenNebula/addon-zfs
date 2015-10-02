@@ -106,7 +106,9 @@ REGISTER_CMD=$(cat <<EOF
             exit -1
         fi
     done
-            $SUDO $MKFS_COMMAND 
+
+    $SUDO chown oneadmin: $DEV
+    $SUDO $MKFS_COMMAND 
 
     fi
 EOF
