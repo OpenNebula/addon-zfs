@@ -44,7 +44,7 @@ UTILS_PATH="${DRIVER_PATH}/.."
 
 XPATH="$UTILS_PATH/xpath.rb -b $DRV_ACTION"
 
-unset i j XPATH_ELEMENTS
+unset i XPATH_ELEMENTS
 
 while IFS= read -r -d '' element; do
     XPATH_ELEMENTS[i++]="$element"
@@ -119,9 +119,6 @@ http://*|https://*)
     ;;
 esac
 
-exec_and_log "eval $DUMP | $SSH $DST_HOST $DD of=$TMP_DST bs=64k" \
-             "Error dumping $SRC to $DST_HOST:$TMP_DST"
-
 REGISTER_CMD=$(cat <<EOF
     set -e
 
@@ -152,5 +149,8 @@ EOF
 )
 ssh_exec_and_log    "$DST_HOST" "$REGISTER_CMD" \
                     "Error registering $DST_HOST:$DEV"
+
+exec_and_log "eval $DUMP | $SSH $DST_HOST $DD of=$DEV bs=64k" \
+             "Error dumping $SRC to $DST_HOST:$DEV"
 
 echo "$ZVOL_SOURCE"
