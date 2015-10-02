@@ -61,8 +61,6 @@ done < <(onevm show -x $VM_ID| $XPATH \
 SRC="${XPATH_ELEMENTS[j++]}"
 CLONE="${XPATH_ELEMENTS[j++]}"
 
-echo === $SRC
-
 SRC_PATH=`arg_path $SRC`
 CLONE_PATH="$SRC_PATH-$VM_ID-$DISK_ID"
 
