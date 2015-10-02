@@ -68,12 +68,22 @@ RM_COMMAND=$(cat <<EOF
     set -e
     $SUDO $SYNC
 
-    #TODO: Remove dependent images
-    #SNAPSOTS="$SUDO ${ZFS_CMD} list -H -r -t snapshot -o name $SRC"
-    #OLD_SRC="$SUDO ${ZFS_CMD} get -H -o value origin $SRC"
-    #CLONE="$SUDO ${ZFS_CMD} get -H -o value clones $SNAPSHOT"
+    $SUDO ${ZFS_CMD} list -H -r -t snapshot -o name $SRC | while read SNAPSHOT; do
+        CLONE=\$($SUDO ${ZFS_CMD} get -H -o value clones \$SNAPSHOT)
 
-    $SUDO ${ZFS_CMD} destroy -R $SRC
+        if [ "\$CLONE" != "-" ]; then
+            $SUDO $ZFS_CMD promote \$CLONE
+        fi
+    done
+
+    ORIGIN=\$($SUDO ${ZFS_CMD} get -H -o value origin $SRC)
+
+    $SUDO ${ZFS_CMD} destroy -r $SRC
+
+    if [ "\$ORIGIN" != "-" ]; then
+        $SUDO ${ZFS_CMD} destroy \$ORIGIN
+    fi
+
 EOF
 )
 
