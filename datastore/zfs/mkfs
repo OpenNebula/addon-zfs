@@ -83,7 +83,7 @@ DEV="/dev/zvol/$DATASET_NAME/$IMAGE_NAME"
 # ------------ Image to save_as disk, no need to create a FS ------------
 
 if [ "$FSTYPE" = "save_as" ]; then
-    echo "$RBD_SOURCE"
+    echo "$ZVOL_SOURCE"
     exit 0
 fi
 
