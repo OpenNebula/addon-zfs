@@ -10,9 +10,9 @@ To contribute bug patches or new features, you can use the github Pull Request m
 
 More info:
 * [How to Contribute](http://opennebula.org/addons/contribute/)
-* Support: [OpenNebula user mailing list](http://opennebula.org/community:mailinglists)
-* Development: [OpenNebula developers mailing list](http://opennebula.org/community:mailinglists)
-* Issues Tracking: Github issues (https://github.com/kvaps/opennebula-addon-zfs/issues)
+* Support: [OpenNebula user forum](https://forum.opennebula.org/c/support)
+* Development: [OpenNebula developers forum](https://forum.opennebula.org/c/development)
+* Issues Tracking: Github issues (https://github.com/OpenNebula/addon-zfs/issues)
 
 ## Author
 
