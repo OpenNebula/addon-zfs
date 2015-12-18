@@ -58,7 +58,7 @@ It will also be used to hold context images and Disks created on the fly, they w
 
 ### Configuring ZFS Datastores
 
-The first step to create a iSCSI datastore is to set up a template file for it. In the following table you can see the supported configuration attributes. The datastore type is set by its drivers, in this case be sure to add `DS_MAD=iscsi` and `TM_MAD=iscsi` for the transfer mechanism, see below.
+The first step to create a ZFS datastore is to set up a template file for it. In the following table you can see the supported configuration attributes. The datastore type is set by its drivers, in this case be sure to add `DS_MAD=zfs` and `TM_MAD=zfs` for the transfer mechanism, see below.
 
 |    Attribute        |                     Description                                                                                                                                      |
 | ---------------     | -------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -131,7 +131,7 @@ TM_MAD_CONF = [
 ]
 ~~~~
 
-Now we add `iscsi` as a new `DATASTORE_MAD` option, replace:
+Now we add `zfs` as a new `DATASTORE_MAD` option, replace:
 
 ~~~~
 DATASTORE_MAD = [
@@ -151,13 +151,13 @@ DATASTORE_MAD = [
 
 ## Usage 
 
-The ZFS transfer driver will create volume with zfs. Once the zvol is available, the driver will link it to disk.i.
+The ZFS transfer driver will create volume with zfs. Once the zvol is available, the driver will link it to `disk.i`.
 
 ### Host Configuration
 
 The host must have ZFS and have the dataset used in the `DATASET` attributed of the datastore template. 
 
-It’s also required to have password-less sudo permission for: `zfs` and `dd`.
+It’s also required to have password-less sudo permission for `zfs` and `dd`.
 
 ## Tuning & Extending
 
