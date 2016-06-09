@@ -45,8 +45,8 @@ There are some limitations that you have to consider, though:
 
 To install the driver you have to copy these files:
 
-* `datastore/zfs` --> `/var/lib/one/datastore/zfs`
-* `tm/zfs` --> `/var/lib/one/tm/zfs`
+* `datastore/zfs` --> `/var/lib/one/remotes/datastore/zfs`
+* `tm/zfs` --> `/var/lib/one/remotes/tm/zfs`
 
 ## Configuration
 
@@ -146,6 +146,14 @@ With:
 DATASTORE_MAD = [
     executable = "one_datastore",
     arguments  = "-t 15 -d dummy,fs,vmfs,lvm,ceph,zfs"
+]
+~~~~
+
+For OpenNebula 5.0 we also need to  create a new DS_MAD_CONF section:
+
+~~~~
+DS_MAD_CONF = [
+    NAME = "zfs", REQUIRED_ATTRS = "DISK_TYPE", PERSISTENT_ONLY = "YES"
 ]
 ~~~~
 
