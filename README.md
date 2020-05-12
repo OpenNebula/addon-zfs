@@ -153,7 +153,7 @@ For OpenNebula 5.0 we also need to  create a new DS_MAD_CONF section:
 
 ~~~~
 DS_MAD_CONF = [
-    NAME = "zfs", REQUIRED_ATTRS = "DISK_TYPE", PERSISTENT_ONLY = "YES"
+    NAME = "zfs", REQUIRED_ATTRS = "DISK_TYPE", PERSISTENT_ONLY = "NO"
 ]
 ~~~~
 
