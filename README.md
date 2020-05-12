@@ -85,7 +85,7 @@ NAME = "zfs"
 DS_MAD = zfs
 TM_MAD = zfs
 DISK_TYPE = block
-DATASET_NAME = rpool/ONE/images
+DATASET_NAME = rpool/ONE/images <-- should we use something else?
 
 > onedatastore create ds.conf
 ID: 100
@@ -153,7 +153,7 @@ For OpenNebula 5.0 we also need to  create a new DS_MAD_CONF section:
 
 ~~~~
 DS_MAD_CONF = [
-    NAME = "zfs", REQUIRED_ATTRS = "DISK_TYPE", PERSISTENT_ONLY = "NO"
+    NAME = "zfs", REQUIRED_ATTRS = "DISK_TYPE", PERSISTENT_ONLY = "NO" <-- what does it mean?
 ]
 ~~~~
 
@@ -176,7 +176,7 @@ Under ``/var/lib/one/remotes/``:
 -  **datastore/zfs/zfs.conf**: Default values for LVM parameters
 
    -  ZFS_CMD: Path to the zfs binary
-   -  BRIDGE_LIST: The zfs server host
+   -  BRIDGE_LIST: The zfs server host <-- maybe better to move it to driver configuration level?
    -  DATASET_NAME: Default dataset
    -  STAGING_DIR: Staging directory
 
